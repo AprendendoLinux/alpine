@@ -54,37 +54,6 @@ Substitua `/caminho/local` pelo diretório que deseja utilizar no host.
 
 ---
 
-## Configuração Técnica
-
-### Dockerfile Base
-
-O `Dockerfile` utilizado para criar a imagem:
-
-```dockerfile
-FROM alpine:latest
-
-# Instalar pacotes necessários
-RUN apk update && apk upgrade && apk add \
-        openssh \
-        bash && \
-        rm /var/cache/apk/* && \
-        sed -i "s/bin\/sh/bin\/bash/" /etc/passwd
-
-# Definir o diretório inicial como /root
-ENV HOME=/root
-
-# Configurar /root como volume
-VOLUME ["/root"]
-
-# Definir /root como diretório de trabalho padrão
-WORKDIR /root
-
-# Comando padrão para manter o contêiner ativo
-CMD ["bash", "-c", "while true; do sleep 30; done"]
-```
-
----
-
 ## Teste e Diagnóstico
 
 - Verifique a presença de Bash:
@@ -107,6 +76,3 @@ Esta imagem é fornecida como está, sem garantias. Sinta-se à vontade para uti
 ## Sobre
 
 Imagem criada pela comunidade **Aprendendo Linux** para auxiliar no aprendizado de Docker e Linux. 
-```
-
-Esse arquivo `README.md` contém todas as informações necessárias para documentar sua imagem Docker no GitHub de maneira clara e objetiva.
