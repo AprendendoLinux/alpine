@@ -10,9 +10,12 @@ RUN apk update && apk upgrade && apk add \
         procps \
         sshpass \
         rsync \
+        tzdata \
         bash && \
         rm /var/cache/apk/* && \
-        sed -i "s/bin\/sh/bin\/bash/" /etc/passwd
+        sed -i "s/bin\/sh/bin\/bash/" /etc/passwd && \
+        ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && \
+        echo 'export TZ="America/Sao_Paulo"' >> /etc/profile
 
 # Define o diretório de trabalho padrão para /root
 WORKDIR /root
