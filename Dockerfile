@@ -8,6 +8,8 @@ RUN apk update && apk upgrade && apk add \
         busybox-extras \
         tcpdump \
         procps \
+        sshpass \
+        rsync \
         bash && \
         rm /var/cache/apk/* && \
         sed -i "s/bin\/sh/bin\/bash/" /etc/passwd
