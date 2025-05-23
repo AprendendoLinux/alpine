@@ -2,12 +2,11 @@ services:
   acesso:
     container_name: acesso
     hostname: acesso
-    image: teste:latest
+    image: aprendendolinux/alpine:latest
     restart: always
     environment:
-        - ROOT_PASSWORD=Sua_Senha_Segura
+      - ROOT_PASSWORD=Sua_Senha_Segura
     volumes:
       - /srv/acesso:/root
     ports:
-      - "19022:22"
-  
+      - "2222:22"
